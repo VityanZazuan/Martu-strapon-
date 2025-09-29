@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cases",
+  "info": {
+    "singularName": "case",
+    "pluralName": "cases",
+    "displayName": "Case"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "Date": {
+      "type": "string",
+      "default": "2025",
+      "required": true,
+      "regex": "^[12][0-9]{3}$"
+    },
+    "Images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}
