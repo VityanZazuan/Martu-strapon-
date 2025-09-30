@@ -41,5 +41,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /var/www/www-root/data/www/strapi
-            pm2 startOrRestart ecosystem.config.cjs --env production
-            pm2 save
+            pm2 restart strapi
