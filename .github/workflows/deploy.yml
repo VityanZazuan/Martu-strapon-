@@ -33,7 +33,7 @@ jobs:
           overwrite: true
           rm: true
 
-      - name: SSH into VPS and install deps + build + restart pm2
+      - name: SSH into VPS and restart pm2
         uses: appleboy/ssh-action@v0.1.4
         with:
           host: ${{ secrets.HOST }}
@@ -41,5 +41,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /var/www/www-root/data/www/strapi
-            pm2 startOrRestart ecosystem.config.js --env production
+            pm2 startOrRestart ecosystem.config.cjs --env production
             pm2 save
