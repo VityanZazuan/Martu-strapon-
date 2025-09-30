@@ -11,11 +11,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Text": {
+    "content": {
       "type": "text",
       "required": true
     },
-    "Author": {
+    "author": {
       "type": "string",
       "required": true
     },
@@ -31,6 +31,9 @@
     "active": {
       "type": "boolean",
       "default": true
+    },
+    "link": {
+      "type": "string"
     }
   }
 }

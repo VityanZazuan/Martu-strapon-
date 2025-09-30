@@ -11,17 +11,17 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "names": {
       "type": "string",
       "required": true
     },
-    "Date": {
+    "date": {
       "type": "string",
       "default": "2025",
       "required": true,
       "regex": "^[12][0-9]{3}$"
     },
-    "Images": {
+    "images": {
       "type": "media",
       "multiple": true,
       "allowedTypes": [
