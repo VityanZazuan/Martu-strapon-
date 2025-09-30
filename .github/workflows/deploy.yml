@@ -1,4 +1,4 @@
-name: Deploy to VPS
+name: Deploy Strapi to VPS
 
 on:
   push:
@@ -14,30 +14,26 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Install Node and Build
-        uses: actions/setup-node@v3
-        with:
-          node-version: 24
-
-      - run: npm ci
-      - run: npm run build
-
-      - name: Deploy via SCP
+      - name: Deploy project files to VPS
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          source: "dist/*"
+          source: "."
           target: "/var/www/www-root/data/www/strapi"
+          overwrite: true
+          rm: true
 
-      - name: Restart Strapi via PM2
+      - name: SSH into VPS and install deps + build + restart pm2
         uses: appleboy/ssh-action@v0.1.4
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd /var/www/www-root/data/www/strapi/dist
-            pm2 restart strapi || pm2 start npm --name strapi -- run start
+            cd /var/www/www-root/data/www/strapi
+            npm ci --omit=dev
+            npm run build
+            pm2 startOrRestart ecosystem.config.js --env production
             pm2 save
