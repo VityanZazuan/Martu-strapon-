@@ -430,6 +430,36 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiApplicationApplication extends Struct.CollectionTypeSchema {
+  collectionName: 'applications';
+  info: {
+    displayName: 'application';
+    pluralName: 'applications';
+    singularName: 'application';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.DateTime;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::application.application'
+    > &
+      Schema.Attribute.Private;
+    phone_number: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    sended: Schema.Attribute.Boolean;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCaseCase extends Struct.CollectionTypeSchema {
   collectionName: 'cases';
   info: {
@@ -492,6 +522,37 @@ export interface ApiReviewReview extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTelegramUserTelegramUser
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'telegram_users';
+  info: {
+    displayName: 'Telegram User';
+    pluralName: 'telegram-users';
+    singularName: 'telegram-user';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    active: Schema.Attribute.Boolean;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::telegram-user.telegram-user'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    userId: Schema.Attribute.Integer;
+    userName: Schema.Attribute.String;
   };
 }
 
@@ -1005,8 +1066,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::application.application': ApiApplicationApplication;
       'api::case.case': ApiCaseCase;
       'api::review.review': ApiReviewReview;
+      'api::telegram-user.telegram-user': ApiTelegramUserTelegramUser;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

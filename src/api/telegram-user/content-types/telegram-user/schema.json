@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "telegram_users",
+  "info": {
+    "singularName": "telegram-user",
+    "pluralName": "telegram-users",
+    "displayName": "Telegram User"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "userId": {
+      "type": "integer"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "userName": {
+      "type": "string"
+    }
+  }
+}
