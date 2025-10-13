@@ -41,4 +41,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /var/www/www-root/data/www/strapi
-            pm2 restart strapi
+            pm2 restart all
