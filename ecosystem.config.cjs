@@ -7,9 +7,10 @@ module.exports = {
       port: "1337",
     },
     {
-      name:"Bot",
-      script:"ts-node",
-      args: "src/bot.ts",
-    }
+      name: "Bot",
+      script: "npx",
+      args: "ts-node src/bot.ts",
+      interpreter: "none",
+    },
   ],
 };
