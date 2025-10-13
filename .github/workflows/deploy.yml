@@ -33,12 +33,9 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           source: |
-            .
-            !node_modules/**
-            !.git/**
+            ./
             !public/uploads/**
             !database/**
-            !.tmp/**
           target: "/var/www/www-root/data/www/strapi"
           overwrite: true
 
