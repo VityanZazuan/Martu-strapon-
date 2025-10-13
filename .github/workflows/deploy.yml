@@ -22,20 +22,13 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      - name: List files for deploy
-        run: |
-          ls -R
-
       - name: Deploy project files to VPS
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          source: |
-            ./
-            !public/uploads/**
-            !database/**
+          source: "*"
           target: "/var/www/www-root/data/www/strapi"
           overwrite: true
 
