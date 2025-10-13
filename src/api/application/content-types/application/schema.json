@@ -19,6 +19,9 @@
     },
     "date": {
       "type": "datetime"
+    },
+    "name": {
+      "type": "string"
     }
   }
 }

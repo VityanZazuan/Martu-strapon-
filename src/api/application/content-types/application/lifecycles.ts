@@ -38,7 +38,7 @@ export default {
         .sendMessage(
           //@ts-ignore
           chat.userId,
-          ` Запрошен обратный звонок с номера: \n ${data.phone_number}. \n Время запроса: \n ${formattedDate}`
+          ` Запрошен обратный звонок с номера: \n ${data.phone_number}. \n Имя ${data.name}. \n Время запроса: \n ${formattedDate}`
         )
 
         .then((response) => {

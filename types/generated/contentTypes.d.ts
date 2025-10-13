@@ -451,6 +451,7 @@ export interface ApiApplicationApplication extends Struct.CollectionTypeSchema {
       'api::application.application'
     > &
       Schema.Attribute.Private;
+    name: Schema.Attribute.String;
     phone_number: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     sended: Schema.Attribute.Boolean;
