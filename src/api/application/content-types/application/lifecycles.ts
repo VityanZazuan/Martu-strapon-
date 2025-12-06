@@ -25,8 +25,6 @@ export default {
       {}
     );
 
-    console.log(chatids);
-
     for (let chat of chatids) {
       //@ts-ignore
       if (!chat.active) return;
