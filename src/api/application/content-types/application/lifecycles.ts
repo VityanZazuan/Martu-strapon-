@@ -1,11 +1,9 @@
 const { Telegraf } = require("telegraf");
-const BOT_TOKEN = process.env.BOT_TOKEN
+const BOT_TOKEN = process.env.BOT_TOKEN;
 const bot = new Telegraf(BOT_TOKEN);
 
 export default {
   async beforeCreate(event) {
-    console.log(event);
-    
     const { data, where, select, populate } = event.params;
     if (data.publishedAt) return;
     const formattedDate = new Intl.DateTimeFormat("ru-RU", {
@@ -19,9 +17,9 @@ export default {
 
       day: "numeric",
     }).format(new Date(data.createdAt));
-    console.log(formattedDate);
+
     const chatids = await strapi.entityService.findMany(
-        //@ts-ignore
+      //@ts-ignore
       "api::telegram-user.telegram-user",
 
       {}
